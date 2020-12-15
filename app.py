@@ -9,9 +9,22 @@ def hello():
 
 @app.route('/door/<command>')
 def door(command):
-    print("%s" %command)
-    SER = serial.Serial('COM-7', 115200)
-    SER.write('a')
+    
+    try:
+        SER = serial.Serial('COM7', 115200)
+        if(command == 'on'):
+            print("%s" %command)
+            SER.write(b'a')
+        elif(command == 'off'):
+            print("%s" %command)
+            SER.write(b'a')
+        else:
+            print("Error")
+    except Exception as e:
+        print(e)
+    finally:
+        SER.close()
+
     return jsonify(success=True)
 
 def main():
