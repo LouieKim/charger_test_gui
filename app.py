@@ -17,7 +17,7 @@ def door(command):
             SER.write(b'a')
         elif(command == 'off'):
             print("%s" %command)
-            SER.write(b'a')
+            SER.write(b'b')
         else:
             print("Error")
     except Exception as e:
