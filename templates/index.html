@@ -3,31 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <title>Everon Test GUI</title>
+    <title>Hello EVERON</title>
 </head>
 <body>
-    <p>Hello Test world</p>
-    <button id='door_on' onclick="door_btn_on('on')">DOOR ON</button>
-    <button id='door_off' onclick="door_btn_on('off')">DOOR OFF</button>
-
-    <script>
-        function door_btn_on(command) {
-            if(command == "on"){
-                $.ajax({
-                url: 'http://localhost:5000/door/on',
-                type: 'GET'
-                });
-            }
-            else{
-                $.ajax({
-                url: 'http://localhost:5000/door/off',
-                type: 'GET'
-                });
-            }
-            
-        }
-
-    </script>
+    <t1>Hello Developer EVERON</t1>
+    
 </body>
 </html>

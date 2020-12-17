@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>Everon Test GUI</title>
+</head>
+<body>
+    <p>Hello EVERON GPIO OUT Test world</p>
+    <div>
+    <button type="button" class="btn btn-primary" onclick="location.href='http://localhost:5000/gpio_out'">GPIO_OUT</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='http://localhost:5000/gpio_in'">GPIO_in</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='http://localhost:5000/adc'">adc</button>
+    </div>
+    <button onclick="btn_test(device_enum.door_01, 'on')">DOOR_01_ON</button>
+    <button onclick="btn_test(device_enum.door_01,'off')">DOOR_01_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.door_02, 'on')">DOOR_02_ON</button>
+    <button onclick="btn_test(device_enum.door_02,'off')">DOOR_02_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.fan_01, 'on')">FAN_01_ON</button>
+    <button onclick="btn_test(device_enum.fan_01,'off')">FAN_01_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.fan_02, 'on')">FAN_02_ON</button>
+    <button onclick="btn_test(device_enum.fan_02,'off')">FAN_02_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.mc_01, 'on')">MC_01_ON</button>
+    <button onclick="btn_test(device_enum.mc_01,'off')">MC_01_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.mc_02, 'on')">MC_02_ON</button>
+    <button onclick="btn_test(device_enum.mc_02,'off')">MC_02_OFF</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.relay_01_02, 'on')">relay_01_02</button>
+    <button onclick="btn_test(device_enum.relay_01_02,'off')">relay_01_02</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.relay_03_04, 'on')">relay_03_04</button>
+    <button onclick="btn_test(device_enum.relay_03_04,'off')">relay_03_04</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.relay_05_06, 'on')">relay_05_06</button>
+    <button onclick="btn_test(device_enum.relay_05_06,'off')">relay_05_06</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.r_led_01, 'on')">r_led_01</button>
+    <button onclick="btn_test(device_enum.r_led_01,'off')">r_led_01</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.g_led_01, 'on')">g_led_01</button>
+    <button onclick="btn_test(device_enum.g_led_01,'off')">g_led_01</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.b_led_01, 'on')">b_led_01</button>
+    <button onclick="btn_test(device_enum.b_led_01,'off')">b_led_01</button>
+
+    <P></P>
+    <button onclick="btn_test(device_enum.r_led_02, 'on')">r_led_02</button>
+    <button onclick="btn_test(device_enum.r_led_02,'off')">r_led_02</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.g_led_02, 'on')">g_led_02</button>
+    <button onclick="btn_test(device_enum.g_led_02,'off')">g_led_02</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.b_led_02, 'on')">b_led_02</button>
+    <button onclick="btn_test(device_enum.b_led_02,'off')">b_led_02</button>
+
+    <P></P>
+    <button onclick="btn_test(device_enum.status_led_01, 'on')">status_led_01</button>
+    <button onclick="btn_test(device_enum.status_led_01,'off')">status_led_01</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.status_led_02, 'on')">status_led_02</button>
+    <button onclick="btn_test(device_enum.status_led_02,'off')">status_led_02</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.status_led_03, 'on')">status_led_03</button>
+    <button onclick="btn_test(device_enum.status_led_03,'off')">status_led_03</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.status_led_04, 'on')">status_led_04</button>
+    <button onclick="btn_test(device_enum.status_led_04,'off')">status_led_04</button>
+    <P></P>
+    <button onclick="btn_test(device_enum.fault_led, 'on')">fault_led</button>
+    <button onclick="btn_test(device_enum.fault_led,'off')">fault_led</button>
+
+
+    <script>
+        var device_enum = {"door_01":0, "door_02":1, "fan_01":2, "fan_02":3, "mc_01":4, "mc_02":5, "relay_01_02":6, "relay_03_04":7, "relay_05_06":8, 
+        "r_led_01":9, "g_led_01":10, "b_led_01":11, "r_led_02":12, "g_led_02":13, "b_led_02":14, 
+        "status_led_01":15, "status_led_02":16, "status_led_03":17, "status_led_04":18, "fault_led":19
+        }
+
+        function btn_test(device_id, command) {
+            $.ajax({
+                url: "http://localhost:5000/gpio_out/" + device_id + "/" + command,
+                type: 'GET'
+                });
+            }
+
+    </script>
+</body>
+</html>
